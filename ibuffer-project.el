@@ -163,7 +163,7 @@ use it."
     "Toggle current view to buffers with project root dir QUALIFIER."
   (:description "project root dir"
                 :reader (read-regexp "Filter by project root dir (regexp): "))
-  (ibuffer-awhen (ibuffer-project-root buf)
+  (when-let (ibuffer-project-root buf)
     (if (stringp qualifier)
         (string-match-p qualifier (car it))
       (equal qualifier it))))
